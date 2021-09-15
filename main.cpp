@@ -91,51 +91,100 @@ void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat
 
 void CreateObjects() {
 
+    /* 
+
+    GLfloat vertices[] = {
+        // x     y      z        u	  v			                 nx	  ny    nz
+        -1.0f, -1.0f, -1.0f,   0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //0
+        -1.0f, 1.0f, -1.0f,    0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
+        1.0f, 1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+        1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //3
+        -1.0f, -1.0f, 1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+        -1.0f, 1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
+        1.0f, 1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
+        1.0f, -1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f //7
+    }; */
+
     unsigned int indices[] = {
         0, 1, 2,
-        0, 2, 3,
-        4, 5, 6,
-        4, 6, 7,
-        0, 1, 5,
-        0, 4, 5,
-        1, 2, 6,
-        1, 5, 6,
-        2, 3, 7,
-        2, 6, 7,
-        0, 3, 7,
-        0, 4, 7,
+        3, 4, 5,
+        6, 7, 8,
+        9, 10, 11,
+        12, 13, 14,
+        15, 16, 17,
+        18, 19, 20,
+        21, 22, 23,
+        24, 25, 26,
+        27, 28, 29,
+        30, 31, 32,
+        33, 34, 35
     };
 
     GLfloat vertices[] = {
         // x     y      z        u	  v			                 nx	  ny    nz
-        -1.0f, -1.0f, -1.0f,   0.000059f, 1.0f - 0.000004f,		0.0f, 0.0f, 0.0f,
-        -1.0f, 1.0f, -1.0f,    0.000103f, 1.0f - 0.336048f,		0.0f, 0.0f, 0.0f,
-        1.0f, 1.0f, -1.0f,     0.335973f, 1.0f - 0.335903f,		0.0f, 0.0f, 0.0f,
-        1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f,
-        -1.0f, -1.0f, 1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f,
-        -1.0f, 1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f,
-        1.0f, 1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f,
-        1.0f, -1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f
+        
+        // triangle (0-1-2)
+        -1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //0
+        -1.0f, 1.0f, -1.0f,     1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //1
+        1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+
+        // triangle (0-3-2)
+        -1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //0
+        1.0f, -1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
+        1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+
+        // triangle (1-5-4)
+        -1.0f, 1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
+        -1.0f, 1.0f, 1.0f,      1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
+        -1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+
+        // triangle (1-0-4)
+        -1.0f, 1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
+        -1.0f, -1.0f, -1.0f,    0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
+        -1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+
+        // triangle (2-6-5)
+        1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+        1.0f, 1.0f, 1.0f,       1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
+        -1.0f, 1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
+
+        // triangle (2-1-5)
+        1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+        -1.0f, 1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
+        -1.0f, 1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
+
+        // triangle (3-7-6)
+        1.0f, -1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
+        1.0f, -1.0f, 1.0f,      1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
+        1.0f, 1.0f, 1.0f,       0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
+
+        // triangle (3-2-6)
+        1.0f, -1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
+        1.0f, 1.0f, -1.0f,      0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+        1.0f, 1.0f, 1.0f,       0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
+
+        // triangle (0-4-7)
+        -1.0f, -1.0f, -1.0f,    1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
+        -1.0f, -1.0f, 1.0f,     1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+        1.0f, -1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
+
+        // triangle (0-3-7)
+        -1.0f, -1.0f, -1.0f,    1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
+        1.0f, -1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
+        1.0f, -1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
+
+        // triangle (4-5-6)
+        -1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+        -1.0f, 1.0f, 1.0f,      0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //5
+        1.0f, 1.0f, 1.0f,       1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //6
+
+        // triangle (4-7-6)
+        -1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+        1.0f, -1.0f, 1.0f,      1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
+        1.0f, 1.0f, 1.0f,       1.0f, 1.0f,		                0.0f, 0.0f, 0.0f //6
     };
     
-    calcAverageNormals(indices, 36, vertices, 64, 8, 5);
-
-    /* unsigned int indices[] = {
-        0, 3, 1,
-        1, 3, 2,
-        2, 3, 0,
-        0, 1, 2
-    };
-
-    GLfloat vertices[] = {
-        //	x      y      z			u	  v			nx	  ny    nz
-            -1.0f, -1.0f, -0.6f,		0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
-            0.0f, -1.0f, 1.0f,		0.5f, 0.0f,		0.0f, 0.0f, 0.0f,
-            1.0f, -1.0f, -0.6f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
-            0.0f, 1.0f, 0.0f,		0.5f, 1.0f,		0.0f, 0.0f, 0.0f
-    };
-
-    calcAverageNormals(indices, 12, vertices, 32, 8, 5); */
+    calcAverageNormals(indices, 36, vertices, 288, 8, 5);
 
     unsigned int floorIndices[] = {
         0, 2, 1,
@@ -152,11 +201,11 @@ void CreateObjects() {
     
 
     Mesh* obj1 = new Mesh();
-    obj1->CreateMesh(vertices, indices, 64, 36);
+    obj1->CreateMesh(vertices, indices, 288, 36);
     meshList.push_back(obj1);
 
     Mesh* obj2 = new Mesh();
-    obj2->CreateMesh(vertices, indices, 64, 36);
+    obj2->CreateMesh(vertices, indices, 288, 36);
     meshList.push_back(obj2);
 
     Mesh* obj3 = new Mesh();
@@ -179,7 +228,7 @@ int main() {
 
     camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 5.0f, 0.5f);
 
-    brickTexture = Texture("Textures/brick.png");
+    brickTexture = Texture("Textures/marioblock.png");
     brickTexture.LoadTextureA();
     dirtTexture = Texture("Textures/dirt.png");
     dirtTexture.LoadTextureA();
@@ -191,7 +240,7 @@ int main() {
 
 
     mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-        0.2f, 0.6f,
+        1.0f, 0.0f,
         0.0f, 0.0f, -1.0f);
 
     unsigned int pointLightCount = 0;
@@ -264,7 +313,9 @@ int main() {
 
         glm::mat4 model(1.0f);
 
+        stbi_set_flip_vertically_on_load(true);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
+        model = glm::rotate(model, 90.0f * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f)); // Rotation
         //model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
         brickTexture.UseTexture();
@@ -286,19 +337,6 @@ int main() {
         dirtTexture.UseTexture();
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[2]->RenderMesh();
-
-        /* model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(-7.0f, 0.0f, 10.0f));
-        model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(-3.0f, 2.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-        model = glm::rotate(model, -90.0f * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess); */
 
         glUseProgram(0);
 
