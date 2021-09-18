@@ -41,6 +41,7 @@ Camera camera;
 Texture brickTexture;
 Texture dirtTexture;
 Texture plainTexture;
+Texture itemBlockTexture;
 
 Material shinyMaterial;
 Material dullMaterial;
@@ -228,7 +229,9 @@ int main() {
 
     camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 5.0f, 0.5f);
 
-    brickTexture = Texture("Textures/marioblock.png");
+    itemBlockTexture = Texture("Textures/marioblock.png");
+    itemBlockTexture.LoadTextureA();
+    brickTexture = Texture("Textures/brickblock.png");
     brickTexture.LoadTextureA();
     dirtTexture = Texture("Textures/dirt.png");
     dirtTexture.LoadTextureA();
@@ -238,10 +241,15 @@ int main() {
     shinyMaterial = Material(4.0f, 256);
     dullMaterial = Material(0.3f, 4);
 
+    xwing = Model();
+    xwing.LoadModel("Models/x-wing.obj");
+
+    blackhawk = Model();
+    blackhawk.LoadModel("Models/uh60.obj");
 
     mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-        1.0f, 0.0f,
-        0.0f, 0.0f, -1.0f);
+        1.0f, 1.0f,
+        0.0f, 0.0f, 0.0f);
 
     unsigned int pointLightCount = 0;
     pointLights[0] = PointLight(0.0f, 0.0f, 1.0f,
@@ -313,21 +321,22 @@ int main() {
 
         glm::mat4 model(1.0f);
 
-        stbi_set_flip_vertically_on_load(true);
+        //stbi_set_flip_vertically_on_load(true);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
         model = glm::rotate(model, 90.0f * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f)); // Rotation
         //model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        brickTexture.UseTexture();
+        itemBlockTexture.UseTexture();
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[0]->RenderMesh();
 
         model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, 4.0f, -2.5f));
+        model = glm::rotate(model, 90.0f * toRadians, glm::vec3(-1.0f, 0.0f, 0.0f)); // Rotation
         //model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        dirtTexture.UseTexture();
-        dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+        brickTexture.UseTexture();
+        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[1]->RenderMesh();
 
         model = glm::mat4(1.0f);
@@ -337,6 +346,21 @@ int main() {
         dirtTexture.UseTexture();
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[2]->RenderMesh();
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-5.0f, 1.0f, 10.0f));
+        model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+        xwing.RenderModel();
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-3.0f, 2.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+        model = glm::rotate(model, -90.0f * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+        blackhawk.RenderModel();
 
         glUseProgram(0);
 
