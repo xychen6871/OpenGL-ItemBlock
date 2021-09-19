@@ -48,8 +48,7 @@ void Model::LoadMesh(aiMesh* mesh, const aiScene* scene)
 		vertices.insert(vertices.end(), { mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z });
 		if (mesh->mTextureCoords[0]) {
 			vertices.insert(vertices.end(), { mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y });
-		}
-		else {
+		} else {
 			vertices.insert(vertices.end(), { 0.0f, 0.0f });
 		}
 

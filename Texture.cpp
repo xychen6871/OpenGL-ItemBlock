@@ -22,7 +22,7 @@ Texture::Texture(const char* fileLoc)
 
 bool Texture::LoadTexture()
 {
-	unsigned char* texData = stbi_load(fileLocation, &width, &height, &bitDepth, 0);
+	unsigned char *texData = stbi_load(fileLocation, &width, &height, &bitDepth, 0);
 	if (!texData)
 	{
 		printf("Failed to find: %s\n", fileLocation);
@@ -43,7 +43,6 @@ bool Texture::LoadTexture()
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	stbi_image_free(texData);
-
 	return true;
 }
 
@@ -70,13 +69,12 @@ bool Texture::LoadTextureA()
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	stbi_image_free(texData);
-
 	return true;
 }
 
 void Texture::UseTexture()
 {
-	glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 }
 

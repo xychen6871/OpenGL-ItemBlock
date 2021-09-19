@@ -5,11 +5,11 @@ Window::Window()
 	width = 800;
 	height = 600;
 
-	for (size_t i = 0; i < 1024; i++)
+	for(size_t i = 0; i < 1024; i++)
 	{
 		keys[i] = 0;
 	}
-
+	
 	xChange = 0.0f;
 	yChange = 0.0f;
 }
@@ -23,7 +23,7 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	{
 		keys[i] = 0;
 	}
-
+	
 	xChange = 0.0f;
 	yChange = 0.0f;
 }
