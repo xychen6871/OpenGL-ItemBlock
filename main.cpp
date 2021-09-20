@@ -131,65 +131,66 @@ void CreateObjects()
 	GLfloat vertices[] = {
 		// x     y      z        u	  v			                 nx	  ny    nz
 
-		// triangle (0-1-2)
-		-1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //0
-		-1.0f, 1.0f, -1.0f,     1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //1
+		// triangle (0-1-2 changed to 2-1-0) Fixed
 		1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+		-1.0f, 1.0f, -1.0f,     1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //1
+		-1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //0
 
-		// triangle (0-3-2)
+		// triangle (0-3-2) OK
 		-1.0f, -1.0f, -1.0f,    0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //0
 		1.0f, -1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
 		1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
 
-		// triangle (1-5-4)
+		// triangle (1-5-4) OK
 		-1.0f, 1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
 		-1.0f, 1.0f, 1.0f,      1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
 		-1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
 
-		// triangle (1-0-4)
-		-1.0f, 1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
-		-1.0f, -1.0f, -1.0f,    0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
+		// triangle (1-0-4 changed to 4-0-1) Fixed
 		-1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+		-1.0f, -1.0f, -1.0f,    0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
+		-1.0f, 1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
 
-		// triangle (2-6-5)
+		// triangle (2-6-5) OK
 		1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
 		1.0f, 1.0f, 1.0f,       1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
 		-1.0f, 1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
 
-		// triangle (2-1-5)
-		1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
-		-1.0f, 1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
+		// triangle (2-1-5 changed to 5-1-2) Fixed
 		-1.0f, 1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //5
+		-1.0f, 1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //1
+		1.0f, 1.0f, -1.0f,      1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
 
-		// triangle (3-7-6)
+		// triangle (3-7-6) OK
 		1.0f, -1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
 		1.0f, -1.0f, 1.0f,      1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
 		1.0f, 1.0f, 1.0f,       0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
 
-		// triangle (3-2-6)
-		1.0f, -1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
-		1.0f, 1.0f, -1.0f,      0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+		// triangle (3-2-6 changed to 6-2-3) Fixed
 		1.0f, 1.0f, 1.0f,       0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //6
+		1.0f, 1.0f, -1.0f,      0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //2
+		1.0f, -1.0f, -1.0f,     1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
 
-		// triangle (0-4-7)
+		// triangle (0-4-7) OK 
 		-1.0f, -1.0f, -1.0f,    1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
 		-1.0f, -1.0f, 1.0f,     1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
 		1.0f, -1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
 
-		// triangle (0-3-7)
-		-1.0f, -1.0f, -1.0f,    1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
-		1.0f, -1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
+		// triangle (0-3-7 changed to 7-3-0) Fixed
 		1.0f, -1.0f, 1.0f,      0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
+		1.0f, -1.0f, -1.0f,     0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //3
+		-1.0f, -1.0f, -1.0f,    1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //0
 
-		// triangle (4-5-6)
+
+		// triangle (4-5-6) OK
 		-1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
 		-1.0f, 1.0f, 1.0f,      0.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //5
 		1.0f, 1.0f, 1.0f,       1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //6
 
-		// triangle (4-7-6)
-		-1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //4
+		// triangle (4-7-6 changed to 6-7-4) Fixed
+		1.0f, 1.0f, 1.0f,       1.0f, 1.0f,		                0.0f, 0.0f, 0.0f, //6
 		1.0f, -1.0f, 1.0f,      1.0f, 0.0f,		                0.0f, 0.0f, 0.0f, //7
-		1.0f, 1.0f, 1.0f,       1.0f, 1.0f,		                0.0f, 0.0f, 0.0f //6
+		-1.0f, -1.0f, 1.0f,     0.0f, 0.0f,		                0.0f, 0.0f, 0.0f //4
 	};
 
 	calcAverageNormals(indices, 36, vertices, 288, 8, 5);
@@ -434,12 +435,19 @@ int main()
 	spotLightCount++;
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga"); //p_R
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga"); //n_L
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga"); //p_U
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga"); //n_D
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga"); //n_B
-	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga"); //p_F
+	/* skyboxFaces.push_back("Textures/Skybox/scene_r.tga"); //R
+	skyboxFaces.push_back("Textures/Skybox/scene_l.tga"); //L
+	skyboxFaces.push_back("Textures/Skybox/scene_u.tga"); //U
+	skyboxFaces.push_back("Textures/Skybox/scene_d.tga"); //D
+	skyboxFaces.push_back("Textures/Skybox/scene_b.tga"); //B
+	skyboxFaces.push_back("Textures/Skybox/scene_f.tga"); //F */
+
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_up.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_dn.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_bk.tga");
+	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_ft.tga"); 
 
 	skybox = Skybox(skyboxFaces);
 	
